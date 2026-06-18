@@ -61,19 +61,9 @@ export default function TradePanel({ market }: TradePanelProps) {
     }
   };
 
-  const isMarketLocked = market.status !== 'open';
-
   return (
-    <div className={`bg-white rounded-3xl p-6 shadow-xl border border-gray-100 ${isMarketLocked ? 'opacity-75 relative' : ''}`}>
-      {isMarketLocked && (
-        <div className="absolute inset-0 z-10 bg-white/20 backdrop-blur-[2px] rounded-3xl flex items-center justify-center p-6 text-center">
-          <div className="bg-white/90 p-4 rounded-2xl shadow-xl border border-gray-100">
-            <span className="text-[10px] font-black uppercase text-red-500 block mb-1">Trading Suspended</span>
-            <p className="text-xs font-bold text-gray-500">Market is currently in {market.status.replace('_', ' ')} state.</p>
-          </div>
-        </div>
-      )}
-      <div className="flex bg-gray-100 p-1 rounded-xl mb-6">
+    <div className=\"bg-white rounded-3xl p-6 shadow-xl border border-gray-100\">
+      <div className=\"flex bg-gray-100 p-1 rounded-xl mb-6\">
         <button
           onClick={() => setSide('buy')}
           className={`flex-1 py-2 rounded-lg font-bold text-sm transition-all ${side === 'buy' ? 'bg-sangoma-green text-white shadow-sm' : 'text-gray-500'}`}
@@ -88,9 +78,9 @@ export default function TradePanel({ market }: TradePanelProps) {
         </button>
       </div>
 
-      <div className="mb-6">
-        <label className="block text-[10px] font-black uppercase text-gray-400 mb-2 tracking-widest">Select Outcome</label>
-        <div className="grid grid-cols-2 gap-2">
+      <div className=\"mb-6\">
+        <label className=\"block text-[10px] font-black uppercase text-gray-400 mb-2 tracking-widest\">Select Outcome</label>
+        <div className=\"grid grid-cols-2 gap-2\">
           {market.outcome_tokens?.map((token) => (
             <button
               key={token.id}
@@ -107,10 +97,10 @@ export default function TradePanel({ market }: TradePanelProps) {
         </div>
       </div>
 
-      <div className="space-y-4 mb-8">
-        <div className="flex justify-between items-end">
-          <label className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Order Type</label>
-          <div className="flex gap-4">
+      <div className=\"space-y-4 mb-8\">
+        <div className=\"flex justify-between items-end\">
+          <label className=\"text-[10px] font-black uppercase text-gray-400 tracking-widest\">Order Type</label>
+          <div className=\"flex gap-4\">
             <button onClick={() => setOrderType('limit')} className={`text-xs font-bold ${orderType === 'limit' ? 'text-sangoma-green underline' : 'text-gray-400'}`}>Limit</button>
             <button onClick={() => setOrderType('market')} className={`text-xs font-bold ${orderType === 'market' ? 'text-sangoma-green underline' : 'text-gray-400'}`}>Market</button>
           </div>
@@ -118,52 +108,52 @@ export default function TradePanel({ market }: TradePanelProps) {
         
         {orderType === 'limit' && (
           <div>
-            <label className="block text-[10px] font-black uppercase text-gray-400 mb-1 tracking-widest">Price (SNGM)</label>
-            <div className="relative">
+            <label className=\"block text-[10px] font-black uppercase text-gray-400 mb-1 tracking-widest\">Price (SNGM)</label>
+            <div className=\"relative\">
               <input
-                type="number"
-                step="0.01"
-                min="0.01"
-                max="0.99"
+                type=\"number\"
+                step=\"0.01\"
+                min=\"0.01\"
+                max=\"0.99\"
                 value={price}
                 onChange={(e) => setPrice(parseFloat(e.target.value))}
-                className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl py-3 px-4 font-black text-sangoma-green outline-none focus:border-sangoma-green/30"
+                className=\"w-full bg-gray-50 border-2 border-gray-100 rounded-xl py-3 px-4 font-black text-sangoma-green outline-none focus:border-sangoma-green/30\"
               />
-              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-400">per share</span>
+              <span className=\"absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-400\">per share</span>
             </div>
           </div>
         )}
 
         <div>
-          <label className="block text-[10px] font-black uppercase text-gray-400 mb-1 tracking-widest">Quantity</label>
+          <label className=\"block text-[10px] font-black uppercase text-gray-400 mb-1 tracking-widest\">Quantity</label>
           <input
-            type="number"
+            type=\"number\"
             value={quantity}
             onChange={(e) => setQuantity(parseInt(e.target.value))}
-            className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl py-3 px-4 font-black text-sangoma-green outline-none focus:border-sangoma-green/30"
+            className=\"w-full bg-gray-50 border-2 border-gray-100 rounded-xl py-3 px-4 font-black text-sangoma-green outline-none focus:border-sangoma-green/30\"
           />
         </div>
       </div>
 
-      <div className="bg-sangoma-green/5 rounded-2xl p-4 mb-6 border border-sangoma-green/10">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-xs font-bold text-sangoma-earth">Total Cost</span>
-          <span className="font-black text-sangoma-green">{(price * quantity).toFixed(2)} SNGM</span>
+      <div className=\"bg-sangoma-green/5 rounded-2xl p-4 mb-6 border border-sangoma-green/10\">
+        <div className=\"flex justify-between items-center mb-2\">
+          <span className=\"text-xs font-bold text-sangoma-earth\">Total Cost</span>
+          <span className=\"font-black text-sangoma-green\">{(price * quantity).toFixed(2)} SNGM</span>
         </div>
-        <div className="flex justify-between items-center mb-4">
-          <span className="text-xs font-bold text-sangoma-earth">Potential Payout</span>
-          <span className="font-black text-sangoma-gold">{(1.00 * quantity).toFixed(2)} SNGM</span>
+        <div className=\"flex justify-between items-center mb-4\">
+          <span className=\"text-xs font-bold text-sangoma-earth\">Potential Payout</span>
+          <span className=\"font-black text-sangoma-gold\">{(1.00 * quantity).toFixed(2)} SNGM</span>
         </div>
         
-        <div className="flex items-center gap-2 pt-2 border-t border-sangoma-green/10">
+        <div className=\"flex items-center gap-2 pt-2 border-t border-sangoma-green/10\">
           <input
-            type="checkbox"
-            id="oneClick"
+            type=\"checkbox\"
+            id=\"oneClick\"
             checked={oneClickEnabled}
             onChange={(e) => setOneClickEnabled(e.target.checked)}
-            className="w-4 h-4 rounded text-sangoma-green focus:ring-sangoma-green"
+            className=\"w-4 h-4 rounded text-sangoma-green focus:ring-sangoma-green\"
           />
-          <label htmlFor="oneClick" className="text-[10px] font-bold text-sangoma-earth uppercase tracking-tight">
+          <label htmlFor=\"oneClick\" className=\"text-[10px] font-bold text-sangoma-earth uppercase tracking-tight\">
             Enable One-Click Trading (Session Keys)
           </label>
         </div>

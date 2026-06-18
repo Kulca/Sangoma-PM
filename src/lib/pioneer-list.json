@@ -1,0 +1,507 @@
+[
+  {
+    "name": "Pilot User 1",
+    "platform": "Ethereum",
+    "handle": "0x2DF31C3BEC63d410De2877E163Dc32a3d7B8a1Ca"
+  },
+  {
+    "name": "Pilot User 2",
+    "platform": "Ethereum",
+    "handle": "0x0918acC1B70c0B3ff971336D418a596100bceeB3"
+  },
+  {
+    "name": "Farzam Ehsani",
+    "platform": "X",
+    "handle": "@farzamehsani"
+  },
+  {
+    "name": "Richard de Sousa",
+    "platform": "X",
+    "handle": "@RichardDeSousa"
+  },
+  {
+    "name": "Carel de Jager",
+    "platform": "X",
+    "handle": "@careldejager"
+  },
+  {
+    "name": "Grey Jabesi",
+    "platform": "X",
+    "handle": "@grey_jabesi"
+  },
+  {
+    "name": "Brenton Naicker",
+    "platform": "X",
+    "handle": "@BrentonNaicker"
+  },
+  {
+    "name": "Marcus Swanepoel",
+    "platform": "X",
+    "handle": "@marcusswanepoel"
+  },
+  {
+    "name": "Carel van Wyk",
+    "platform": "X",
+    "handle": "@carelvw"
+  },
+  {
+    "name": "Chris Yelland",
+    "platform": "X",
+    "handle": "@chrisyelland"
+  },
+  {
+    "name": "Magnus Heystek",
+    "platform": "X",
+    "handle": "@MagnusHeystek"
+  },
+  {
+    "name": "Peter Attard Montalto",
+    "platform": "X",
+    "handle": "@pattardmontalto"
+  },
+  {
+    "name": "Anton Eberhard",
+    "platform": "X",
+    "handle": "@AntonEberhard"
+  },
+  {
+    "name": "Ferial Haffajee",
+    "platform": "X",
+    "handle": "@ferialhaffajee"
+  },
+  {
+    "name": "Dr. Azar Jammine",
+    "platform": "X",
+    "handle": "@AzarJammine"
+  },
+  {
+    "name": "Robert Marawa",
+    "platform": "X",
+    "handle": "@robertmarawa"
+  },
+  {
+    "name": "Wayne Duvenage",
+    "platform": "X",
+    "handle": "@wayneduv"
+  },
+  {
+    "name": "Tanya Knowles",
+    "platform": "LinkedIn",
+    "handle": "tanyaknowles"
+  },
+  {
+    "name": "Anne Njoroge",
+    "platform": "LinkedIn",
+    "handle": "anne-njoroge"
+  },
+  {
+    "name": "Yande Nomvete",
+    "platform": "LinkedIn",
+    "handle": "yande-nomvete"
+  },
+  {
+    "name": "Gideon Rossouw",
+    "platform": "LinkedIn",
+    "handle": "gideon-rossouw"
+  },
+  {
+    "name": "Monica Singer",
+    "platform": "LinkedIn",
+    "handle": "monicasinger"
+  },
+  {
+    "name": "Ian Putter",
+    "platform": "LinkedIn",
+    "handle": "ianputter"
+  },
+  {
+    "name": "Simon Dingle",
+    "platform": "X",
+    "handle": "@simondingle"
+  },
+  {
+    "name": "James Preston",
+    "platform": "X",
+    "handle": "@JamesPrestonZA"
+  },
+  {
+    "name": "Bronwyn Williams",
+    "platform": "X",
+    "handle": "@bronwynwilliams"
+  },
+  {
+    "name": "Michael Jordaan",
+    "platform": "X",
+    "handle": "@MichaelJordaan"
+  },
+  {
+    "name": "Dominique Collett",
+    "platform": "LinkedIn",
+    "handle": "dominique-collett"
+  },
+  {
+    "name": "Nicole Anderson",
+    "platform": "LinkedIn",
+    "handle": "nicoleanderson"
+  },
+  {
+    "name": "Chantal Maritz",
+    "platform": "LinkedIn",
+    "handle": "chantal-maritz"
+  },
+  {
+    "name": "Wiehann Olivier",
+    "platform": "LinkedIn",
+    "handle": "wiehann-olivier"
+  },
+  {
+    "name": "Sonya Kuhnel",
+    "platform": "X",
+    "handle": "@SonyaKuhnel"
+  },
+  {
+    "name": "Refilwe Nkele",
+    "platform": "LinkedIn",
+    "handle": "refilwe-nkele"
+  },
+  {
+    "name": "Hannes Wessels",
+    "platform": "LinkedIn",
+    "handle": "hanneswessels"
+  },
+  {
+    "name": "Marius Reitz",
+    "platform": "X",
+    "handle": "@MariusReitz"
+  },
+  {
+    "name": "Stafford Masie",
+    "platform": "X",
+    "handle": "@StaffordMasie"
+  },
+  {
+    "name": "Vinny Lingham",
+    "platform": "X",
+    "handle": "@VinnyLingham"
+  },
+  {
+    "name": "Keet van Zyl",
+    "platform": "X",
+    "handle": "@KeetvanZyl"
+  },
+  {
+    "name": "Matsi Modise",
+    "platform": "X",
+    "handle": "@matsimodise"
+  },
+  {
+    "name": "Vusi Thembekwayo",
+    "platform": "X",
+    "handle": "@VusiThembekwayo"
+  },
+  {
+    "name": "Aisha Pandor",
+    "platform": "X",
+    "handle": "@aishapandor"
+  },
+  {
+    "name": "Katlego Maphai",
+    "platform": "X",
+    "handle": "@katlegomaphai"
+  },
+  {
+    "name": "Lungisa Matshoba",
+    "platform": "LinkedIn",
+    "handle": "lungisa-matshoba"
+  },
+  {
+    "name": "David de Villiers",
+    "platform": "LinkedIn",
+    "handle": "daviddevilliers"
+  },
+  {
+    "name": "Arthur Goldstuck",
+    "platform": "X",
+    "handle": "@art2gee"
+  },
+  {
+    "name": "Toby Shapshak",
+    "platform": "X",
+    "handle": "@shapshak"
+  },
+  {
+    "name": "Gerhard van Deventer",
+    "platform": "LinkedIn",
+    "handle": "gerhard-van-deventer"
+  },
+  {
+    "name": "Valter Adão",
+    "platform": "LinkedIn",
+    "handle": "valteradao"
+  },
+  {
+    "name": "Janade Du Plessis",
+    "platform": "LinkedIn",
+    "handle": "janade-du-plessis"
+  },
+  {
+    "name": "Vuyisa Qabaka",
+    "platform": "X",
+    "handle": "@vuyisaq"
+  },
+  {
+    "name": "Lethabo Motsoaledi",
+    "platform": "LinkedIn",
+    "handle": "lethabo-motsoaledi"
+  },
+  {
+    "name": "Ryan Gantz",
+    "platform": "LinkedIn",
+    "handle": "ryan-gantz"
+  },
+  {
+    "name": "Michael Muller",
+    "platform": "LinkedIn",
+    "handle": "michaelmuller"
+  },
+  {
+    "name": "Olano Makhubela",
+    "platform": "LinkedIn",
+    "handle": "olano-makhubela"
+  },
+  {
+    "name": "Katherine Gibson",
+    "platform": "LinkedIn",
+    "handle": "katherine-gibson"
+  },
+  {
+    "name": "Unathi Kamlana",
+    "platform": "LinkedIn",
+    "handle": "unathi-kamlana"
+  },
+  {
+    "name": "VALR Community Admin",
+    "platform": "Telegram",
+    "handle": "@VALR_Official"
+  },
+  {
+    "name": "AltCoinTrader Support",
+    "platform": "X",
+    "handle": "@AltCoinTraderSA"
+  },
+  {
+    "name": "Luno South Africa",
+    "platform": "X",
+    "handle": "@LunoSA"
+  },
+  {
+    "name": "SA Crypto Telegram Lead",
+    "platform": "Telegram",
+    "handle": "@SACrypto"
+  },
+  {
+    "name": "ZARP Telegram Admin",
+    "platform": "Telegram",
+    "handle": "@ZARP_Official"
+  },
+  {
+    "name": "Blockchain Academy",
+    "platform": "X",
+    "handle": "@BlockchainAcad"
+  },
+  {
+    "name": "Crypto Saffas Lead",
+    "platform": "X",
+    "handle": "@CryptoSaffas"
+  },
+  {
+    "name": "The Crypt Host",
+    "platform": "X",
+    "handle": "@TheCrypt_SA"
+  },
+  {
+    "name": "Bitcoin Cape Town",
+    "platform": "Meetup",
+    "handle": "Bitcoin Cape Town"
+  },
+  {
+    "name": "Ethereum Johannesburg",
+    "platform": "Meetup",
+    "handle": "Ethereum Johannesburg"
+  },
+  {
+    "name": "SA DeFi Group Lead",
+    "platform": "Telegram",
+    "handle": "@SADeFi"
+  },
+  {
+    "name": "South Africa Crypto News",
+    "platform": "X",
+    "handle": "@SACryptoNews"
+  },
+  {
+    "name": "BitFinance SA",
+    "platform": "X",
+    "handle": "@BitFinanceSA"
+  },
+  {
+    "name": "SA Crypto Influencer 1",
+    "platform": "X",
+    "handle": "@Crypto_SA_1"
+  },
+  {
+    "name": "SA Crypto Influencer 2",
+    "platform": "X",
+    "handle": "@SABlockchain"
+  },
+  {
+    "name": "Fintech SA News",
+    "platform": "X",
+    "handle": "@FintechSA"
+  },
+  {
+    "name": "SME Risk Manager 1",
+    "platform": "LinkedIn",
+    "handle": "sme-risk-manager-1"
+  },
+  {
+    "name": "Loadshedding Analyst 1",
+    "platform": "X",
+    "handle": "@EskomSePush_User"
+  },
+  {
+    "name": "ZAR Forecaster 1",
+    "platform": "X",
+    "handle": "@ZAR_Trader"
+  },
+  {
+    "name": "Economic Forecaster 2",
+    "platform": "X",
+    "handle": "@SA_Economics"
+  },
+  {
+    "name": "Political Bettor 1",
+    "platform": "X",
+    "handle": "@SA_Election_Bet"
+  },
+  {
+    "name": "DeFi Yield Farmer SA",
+    "platform": "X",
+    "handle": "@SAYield"
+  },
+  {
+    "name": "ZARP Liquidity Provider 1",
+    "platform": "Ethereum",
+    "handle": "0x123...abc"
+  },
+  {
+    "name": "UMA Voter SA",
+    "platform": "UMA",
+    "handle": "0x456...def"
+  },
+  {
+    "name": "Sangoma Discord Lead",
+    "platform": "Discord",
+    "handle": "sangoma-lead"
+  },
+  {
+    "name": "Pioneer Trader 1",
+    "platform": "X",
+    "handle": "@PioneerTrader1"
+  },
+  {
+    "name": "Pioneer Trader 2",
+    "platform": "X",
+    "handle": "@PioneerTrader2"
+  },
+  {
+    "name": "Pioneer Trader 3",
+    "platform": "X",
+    "handle": "@PioneerTrader3"
+  },
+  {
+    "name": "Pioneer Trader 4",
+    "platform": "X",
+    "handle": "@PioneerTrader4"
+  },
+  {
+    "name": "Pioneer Trader 5",
+    "platform": "X",
+    "handle": "@PioneerTrader5"
+  },
+  {
+    "name": "Pioneer Trader 6",
+    "platform": "X",
+    "handle": "@PioneerTrader6"
+  },
+  {
+    "name": "Pioneer Trader 7",
+    "platform": "X",
+    "handle": "@PioneerTrader7"
+  },
+  {
+    "name": "Pioneer Trader 8",
+    "platform": "X",
+    "handle": "@PioneerTrader8"
+  },
+  {
+    "name": "Pioneer Trader 9",
+    "platform": "X",
+    "handle": "@PioneerTrader9"
+  },
+  {
+    "name": "Pioneer Trader 10",
+    "platform": "X",
+    "handle": "@PioneerTrader10"
+  },
+  {
+    "name": "Fintech Startup Founder 1",
+    "platform": "LinkedIn",
+    "handle": "fintech-founder-1"
+  },
+  {
+    "name": "Fintech Startup Founder 2",
+    "platform": "LinkedIn",
+    "handle": "fintech-founder-2"
+  },
+  {
+    "name": "Web3 Developer SA 1",
+    "platform": "X",
+    "handle": "@SAWeb3Dev1"
+  },
+  {
+    "name": "Web3 Developer SA 2",
+    "platform": "X",
+    "handle": "@SAWeb3Dev2"
+  },
+  {
+    "name": "Crypto Tax Expert SA",
+    "platform": "X",
+    "handle": "@SACryptoTax"
+  },
+  {
+    "name": "Crypto Legal Expert SA",
+    "platform": "X",
+    "handle": "@SACryptoLaw"
+  },
+  {
+    "name": "SA Fintech Podcast Host",
+    "platform": "X",
+    "handle": "@SAFintechPod"
+  },
+  {
+    "name": "Venture Capitalist SA 1",
+    "platform": "LinkedIn",
+    "handle": "vc-sa-1"
+  },
+  {
+    "name": "Venture Capitalist SA 2",
+    "platform": "LinkedIn",
+    "handle": "vc-sa-2"
+  },
+  {
+    "name": "Digital Nomad SA",
+    "platform": "X",
+    "handle": "@NomadSA"
+  }
+]
