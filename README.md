@@ -1,6 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Sangoma Technical Stack
 
-## Getting Started
+- **Frontend:** Next.js 15, Tailwind CSS, Lucide React.
+- **Backend/Database:** Supabase (PostgreSQL, Auth, Realtime).
+- **Matching Engine:** Standalone service in Go (Phase 3).
+- **Compliance:** ThisIsMe (FICA/KYC simulation).
+- **Payments:** Stitch (Instant EFT simulation).
+
+## Phase 3: Matching Engine (Go)
+
+The Sangoma Matching Engine (SME) is a high-performance, in-memory CLOB designed for low-latency order matching.
+
+### Key Features
+- **Price-Time Priority (FIFO):** Standard exchange matching logic.
+- **Limit & Market Orders:** Support for both taker and maker orders.
+- **WebSocket API:** Real-time communication on port `8080`.
+- **Persistence:** Local JSONL logging (extendable to Postgres).
+
+For implementation details and source code, see `/home/team/shared/matching_engine_v1/`.
 
 First, run the development server:
 
