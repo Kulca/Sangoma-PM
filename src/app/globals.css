@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fdfcf0;
+  --foreground: #1a4d2e;
+  --sangoma-green: #1a4d2e;
+  --sangoma-gold: #d4af37;
+  --sangoma-earth: #795548;
+  --sangoma-cream: #fdfcf0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sangoma-green: var(--sangoma-green);
+  --color-sangoma-gold: var(--sangoma-gold);
+  --color-sangoma-earth: var(--sangoma-earth);
+  --color-sangoma-cream: var(--sangoma-cream);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
