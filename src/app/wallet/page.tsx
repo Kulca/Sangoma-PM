@@ -2,12 +2,13 @@
 
 import { useState } from 'react';
 import { mockUserProfile, mockTransactions } from '@/lib/mock-data';
-import { Wallet as WalletIcon, ArrowUpCircle, ArrowDownCircle, Clock, CheckCircle2, AlertCircle, ShieldCheck } from 'lucide-react';
+import { Wallet as WalletIcon, ArrowUpCircle, ArrowDownCircle, Clock, CheckCircle2, AlertCircle, ShieldCheck, Scale, Zap, ShieldAlert } from 'lucide-react';
 import Link from 'next/link';
 
 export default function WalletPage() {
   const [depositAmount, setDepositAmount] = useState('100');
   const [withdrawAmount, setWithdrawAmount] = useState('100');
+  const [stakeAmount, setStakeAmount] = useState('500');
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleDeposit = async () => {
@@ -32,6 +33,14 @@ export default function WalletPage() {
     }, 1000);
   };
 
+  const handleStake = async () => {
+    setIsProcessing(true);
+    setTimeout(() => {
+      alert(`Successfully staked ${stakeAmount} SNGM in the Sangoma Council Pool.`);
+      setIsProcessing(false);
+    }, 1000);
+  };
+
   return (
     <div className="min-h-screen bg-[#faf9f6] pb-24">
       {/* Wallet Header */}
@@ -44,9 +53,15 @@ export default function WalletPage() {
             <div>
               <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Total ZAR Balance</p>
               <h1 className="text-4xl font-black mb-2">R {mockUserProfile.balance_zar.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h1>
-              <div className="flex items-center gap-2 bg-white/10 w-fit px-3 py-1 rounded-full border border-white/20">
-                <span className="text-xs font-bold text-sangoma-gold">SNGM</span>
-                <span className="text-sm font-black">{mockUserProfile.balance_sngm.toLocaleString()}</span>
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 bg-white/10 w-fit px-3 py-1 rounded-full border border-white/20">
+                  <span className="text-xs font-bold text-sangoma-gold uppercase">Liquid SNGM</span>
+                  <span className="text-sm font-black">{mockUserProfile.balance_sngm.toLocaleString()}</span>
+                </div>
+                <div className="flex items-center gap-2 bg-sangoma-gold/20 w-fit px-3 py-1 rounded-full border border-sangoma-gold/30">
+                  <span className="text-xs font-bold text-sangoma-gold uppercase">Staked</span>
+                  <span className="text-sm font-black">2,500</span>
+                </div>
               </div>
             </div>
             
@@ -72,6 +87,61 @@ export default function WalletPage() {
 
       <div className="max-w-4xl mx-auto px-6 -mt-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          {/* SNGM Governance Staking (New Section) */}
+          <div className="md:col-span-2 bg-white border-2 border-sangoma-gold/20 rounded-[2.5rem] p-8 shadow-sm overflow-hidden relative group">
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
+              <Scale size={120} className="text-sangoma-gold" />
+            </div>
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 mb-6">
+                <span className="bg-sangoma-gold text-sangoma-green text-[10px] font-black px-2 py-1 rounded">GOVERNANCE</span>
+                <h2 className="text-[10px] font-black uppercase text-gray-400 tracking-widest">SNGM Staking & Oracle Participation</h2>
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="lg:col-span-2">
+                  <h3 className="text-2xl font-black text-sangoma-green mb-4 italic tracking-tight">Become a Sangoma Oracle</h3>
+                  <p className="text-sm text-gray-500 mb-6 font-medium leading-relaxed">
+                    Stake your SNGM tokens to participate in UMA-powered resolutions. Earn a share of platform fees for accurate voting, but beware: incorrect or malicious votes can lead to <span className="text-red-500 font-bold underline decoration-2 underline-offset-4">slashing</span> of your stake.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-4 mb-8">
+                    <div className="bg-gray-50 rounded-2xl p-4 flex-1 min-w-[140px] border border-gray-100">
+                      <p className="text-[10px] font-black text-gray-400 uppercase mb-1">Current APY</p>
+                      <p className="text-xl font-black text-sangoma-green">14.2%</p>
+                    </div>
+                    <div className="bg-gray-50 rounded-2xl p-4 flex-1 min-w-[140px] border border-gray-100">
+                      <p className="text-[10px] font-black text-gray-400 uppercase mb-1">Resolution Fees</p>
+                      <p className="text-xl font-black text-sangoma-green">R 1,420</p>
+                    </div>
+                    <div className="bg-red-50/30 rounded-2xl p-4 flex-1 min-w-[140px] border border-red-100">
+                      <p className="text-[10px] font-black text-red-400 uppercase mb-1">Slashing Risk</p>
+                      <p className="text-xl font-black text-red-600 flex items-center gap-1">LOW <ShieldAlert size={16}/></p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-sangoma-green rounded-3xl p-6 text-white">
+                  <label className="block text-[10px] font-black uppercase text-white/60 mb-2">Stake SNGM</label>
+                  <input 
+                    type="number"
+                    value={stakeAmount}
+                    onChange={(e) => setStakeAmount(e.target.value)}
+                    className="w-full bg-white/10 border-2 border-white/20 rounded-2xl p-4 mb-4 font-black text-white outline-none focus:border-sangoma-gold/50"
+                  />
+                  <button 
+                    onClick={handleStake}
+                    disabled={isProcessing}
+                    className="w-full bg-sangoma-gold text-sangoma-green font-black py-4 rounded-2xl shadow-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+                  >
+                    <Zap size={18} /> STAKE NOW
+                  </button>
+                  <p className="text-[9px] text-center mt-4 text-white/40 uppercase font-black tracking-widest">Powered by UMA Protocol</p>
+                </div>
+              </div>
+            </div>
+          </div>
           
           {/* Deposit Section */}
           <div className="bg-white border border-sangoma-green/20 rounded-3xl p-8 shadow-sm">

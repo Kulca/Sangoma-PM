@@ -1,9 +1,8 @@
-import { SafeAuthPack, SafeAuthInitOptions } from '@safe-global/auth-kit';
-
 export const getSafeAuthPack = async () => {
+  const { SafeAuthPack } = await import('@safe-global/auth-kit');
   const safeAuthPack = new SafeAuthPack();
   
-  const options: SafeAuthInitOptions = {
+  const options = {
     showRPCGift: true,
     chainConfig: {
       blockExplorerUrl: 'https://amoy.polygonscan.com',
@@ -15,6 +14,6 @@ export const getSafeAuthPack = async () => {
     },
   };
 
-  await safeAuthPack.init(options);
+  await safeAuthPack.init(options as any);
   return safeAuthPack;
 };

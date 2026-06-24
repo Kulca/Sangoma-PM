@@ -1,4 +1,4 @@
-export type MarketStatus = 'open' | 'closed' | 'resolved' | 'disputed';
+export type MarketStatus = 'open' | 'closed' | 'resolved' | 'disputed' | 'uma_proposed' | 'uma_challenged' | 'uma_settled';
 
 export interface Profile {
   id: string;
@@ -6,7 +6,11 @@ export interface Profile {
   email: string;
   balance_sngm: number;
   balance_zar?: number;
-  kyc_status?: 'pending' | 'verified' | 'failed';
+  kyc_status?: 'none' | 'pending' | 'verified' | 'failed';
+  kyc_tier?: 0 | 1 | 2;
+  identity_verified?: boolean;
+  liveness_verified?: boolean;
+  document_verified?: boolean;
 }
 
 export interface OutcomeToken {
@@ -21,7 +25,7 @@ export interface Market {
   id: string;
   title: string;
   description: string;
-  category: 'Energy' | 'Politics' | 'Economics' | 'Water' | 'Logistics';
+  category: 'Energy' | 'Politics' | 'Economics' | 'Water' | 'Logistics' | 'Infrastructure' | 'Finance' | 'Sports';
   status: MarketStatus;
   resolution_date: string;
   resolved_at?: string;
@@ -29,6 +33,11 @@ export interface Market {
   disputed_at?: string;
   dispute_reason?: string;
   is_council_verified?: boolean;
+  uma_proposal_id?: string;
+  uma_proposer?: string;
+  uma_proposed_outcome?: string;
+  uma_liveness_ends?: string;
+  uma_challenger?: string;
 }
 
 export interface MarketProposal {

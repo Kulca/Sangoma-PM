@@ -21,9 +21,9 @@ export default function BottomNav() {
         <Wallet size={20} />
         <span className="text-[9px] font-black uppercase tracking-tighter">Wallet</span>
       </Link>
-      <Link href="/onboarding" className={`flex flex-col items-center gap-1 ${pathname === '/onboarding' ? 'text-sangoma-gold' : 'opacity-40'}`}>
+      <Link href="/verification" className={`flex flex-col items-center gap-1 ${pathname === '/verification' ? 'text-sangoma-gold' : 'opacity-40'}`}>
         <ShieldCheck size={20} />
-        <span className="text-[9px] font-black uppercase tracking-tighter">FICA</span>
+        <span className="text-[9px] font-black uppercase tracking-tighter">Verification</span>
       </Link>
     </nav>
   );

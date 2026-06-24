@@ -16,9 +16,20 @@
   --color-sangoma-gold: var(--sangoma-gold);
   --color-sangoma-earth: var(--sangoma-earth);
   --color-sangoma-cream: var(--sangoma-cream);
+
+  @keyframes progress {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+@layer utilities {
+  .animate-progress {
+    animation: progress 2s ease-in-out infinite;
+  }
 }

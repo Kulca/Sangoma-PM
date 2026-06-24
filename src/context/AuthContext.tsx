@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { getOrCreateSessionKey } from '@/lib/safe-service';
 import { getSafeAuthPack } from '@/lib/safe-auth';
-import { SafeAuthPack } from '@safe-global/auth-kit';
+import type { SafeAuthPack } from '@safe-global/auth-kit';
 import { ethers, BrowserProvider } from 'ethers';
 
 interface AuthContextType {
