@@ -1,21 +1,65 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Lightbulb, Send, CheckCircle, Info } from 'lucide-react';
-import { mockProposals } from '@/lib/mock-data';
 
 export default function ProposalsPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [proposals, setProposals] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     title: '',
     category: 'Energy',
     description: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    fetchProposals();
+  }, []);
+
+  const fetchProposals = async () => {
+    try {
+      setError(null);
+      const res = await fetch('/api/proposals');
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        setProposals(data);
+      } else if (data?.error) {
+        console.error('API error:', data.error);
+      }
+    } catch (error) {
+      console.error('Failed to fetch proposals:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    // In a real app, this would hit the API
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/proposals', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setSubmitted(true);
+        setFormData({ title: '', category: 'Energy', description: '' });
+        fetchProposals();
+      } else {
+        setError(data?.error || 'Failed to submit proposal. Please try again.');
+      }
+    } catch (error) {
+      console.error('Failed to submit proposal:', error);
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -57,6 +101,11 @@ export default function ProposalsPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {error && (
+                  <div className="bg-red-50 border-2 border-red-200 text-red-600 text-xs font-bold py-3 px-4 rounded-2xl">
+                    {error}
+                  </div>
+                )}
                 <div>
                   <label className="block text-[10px] font-black uppercase text-gray-400 mb-1 ml-2">Market Title</label>
                   <input 
@@ -95,9 +144,20 @@ export default function ProposalsPage() {
                 </div>
                 <button 
                   type="submit"
-                  className="w-full bg-sangoma-gold text-sangoma-green font-black py-4 rounded-2xl shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2"
+                  disabled={submitting}
+                  className="w-full bg-sangoma-gold text-sangoma-green font-black py-4 rounded-2xl shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  <Send size={18} /> Send to Council
+                  {submitting ? (
+                    <span className="flex items-center gap-2">
+                      <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                      </svg>
+                      Submitting...
+                    </span>
+                  ) : (
+                    <><Send size={18} /> Send to Council</>
+                  )}
                 </button>
               </form>
             )}
@@ -127,19 +187,29 @@ export default function ProposalsPage() {
 
             <div className="space-y-4">
               <h3 className="text-white/40 font-black uppercase tracking-widest text-[10px] mb-2 px-2">Recent Community Ideas</h3>
-              {mockProposals.map((proposal) => (
-                <div key={proposal.id} className="bg-white/5 border border-white/5 p-5 rounded-2xl">
-                  <div className="flex justify-between items-start mb-1">
-                    <h4 className="font-black text-sm">{proposal.title}</h4>
-                    <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded-full ${
-                      proposal.status === 'approved' ? 'bg-green-500/20 text-green-400' : 'bg-white/10 text-white/40'
-                    }`}>
-                      {proposal.status}
-                    </span>
+              {loading ? (
+                <div className="p-4 text-center text-white/20 text-[10px] font-black uppercase tracking-widest">Loading...</div>
+              ) : proposals.length === 0 ? (
+                <div className="p-4 text-center text-white/20 text-[10px] font-black uppercase tracking-widest">No proposals yet</div>
+              ) : (
+                proposals.map((proposal: any) => (
+                  <div key={proposal.id} className="bg-white/5 border border-white/5 p-5 rounded-2xl">
+                    <div className="flex justify-between items-start mb-1">
+                      <h4 className="font-black text-sm">{proposal.title}</h4>
+                      <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded-full ${
+                        proposal.status === 'approved' ? 'bg-green-500/20 text-green-400' : 'bg-white/10 text-white/40'
+                      }`}>
+                        {proposal.status}
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-white/50 font-medium">{proposal.description}</p>
+                    <div className="flex justify-between items-center mt-2">
+                      <span className="text-[8px] text-sangoma-gold font-bold uppercase">{proposal.category}</span>
+                      <span className="text-[8px] text-white/20">{new Date(proposal.created_at).toLocaleDateString()}</span>
+                    </div>
                   </div>
-                  <p className="text-[10px] text-white/50 font-medium">{proposal.description}</p>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </div>
 
