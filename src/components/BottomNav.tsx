@@ -1,6 +1,6 @@
 'use client';
 
-import { LayoutGrid, BarChart3, Wallet, ShieldCheck } from 'lucide-react';
+import { LayoutGrid, BarChart3, Wallet, Users, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -21,9 +21,13 @@ export default function BottomNav() {
         <Wallet size={20} />
         <span className="text-[9px] font-black uppercase tracking-tighter">Wallet</span>
       </Link>
+      <Link href="/waitlist" className={`flex flex-col items-center gap-1 ${pathname === '/waitlist' ? 'text-sangoma-gold' : 'opacity-40'}`}>
+        <Users size={20} />
+        <span className="text-[9px] font-black uppercase tracking-tighter">Join</span>
+      </Link>
       <Link href="/verification" className={`flex flex-col items-center gap-1 ${pathname === '/verification' ? 'text-sangoma-gold' : 'opacity-40'}`}>
         <ShieldCheck size={20} />
-        <span className="text-[9px] font-black uppercase tracking-tighter">Verification</span>
+        <span className="text-[9px] font-black uppercase tracking-tighter">Verify</span>
       </Link>
     </nav>
   );
