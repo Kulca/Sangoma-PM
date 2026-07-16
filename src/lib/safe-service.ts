@@ -6,10 +6,10 @@ export const SANGOMA_DOMAIN = {
   name: 'Sangoma Matching Engine',
   version: '1.0',
   chainId: 80002, // Polygon Amoy
-  verifyingContract: '0xe302CA1137bC0BEe3A1A615C485b8Bc54262D47f', // Polygon Amoy SangomaExchange
+  verifyingContract: '0xe302CA1137bC0BEe3A1A615C485b8Bc54262D47f', // SangomaExchange (Amoy)
 };
 
-export const UMA_RESOLUTION_MODULE = '0x0000000000000000000000000000000000000000'; // TODO: Update with deployed address from agent-devops-engineer
+export const UMA_RESOLUTION_MODULE = '0x3a299F96E0dD8B767Ddc1BC8e3199FF32F203235'; // SangomaUMAOracle (Amoy)
 
 export const ORDER_TYPES = {
   Order: [
