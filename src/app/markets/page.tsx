@@ -1,4 +1,4 @@
-import { mockMarkets } from '@/lib/mock-data';
+import { getMarkets } from '@/lib/onchain-service';
 import { getESPStatus } from '@/lib/eskom-se-push';
 import MarketCard from '@/components/MarketCard';
 import Header from '@/components/Header';
@@ -9,7 +9,9 @@ const CATEGORIES = ['All', 'Infrastructure', 'Economics', 'Finance', 'Sports', '
 
 export default async function MarketsPage() {
   const espStatus = await getESPStatus();
-  const marketsWithGovernance = mockMarkets.map(m => {
+  // Use onchain service with silent mock fallback
+  const fetchedMarkets = await getMarkets();
+  const marketsWithGovernance = fetchedMarkets.map(m => {
     if (m.id === 'uma-market-1') return { ...m, status: 'uma_proposed' as const };
     if (m.id === 'uma-market-2') return { ...m, status: 'uma_challenged' as const };
     return m;
