@@ -86,7 +86,7 @@ export async function getMarkets(): Promise<Market[]> {
     const count = await factory.marketCount().catch(() => null);
 
     // If we can't read on-chain, return mock data with on-chain metadata merged
-    if (count === null || count === 0n) {
+    if (count === null || BigInt(count) === BigInt(0)) {
       return mergeWithOnchainMetadata(mockMarkets);
     }
 

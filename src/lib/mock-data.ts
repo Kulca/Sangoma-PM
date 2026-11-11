@@ -1,4 +1,4 @@
-import { Market } from './types';
+import { Dispute, Holding, Market, MarketProposal, TradeHistoryItem, Transaction } from './types';
 
 const MOCK_CTF_ADDRESS = '0xB81f3e0A187dFA8006b681056332d7f1b56F7c20';
 const MOCK_COLLATERAL_ADDRESS = '0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582';
@@ -103,8 +103,8 @@ export async function getMarketById(id: string): Promise<Market | undefined> {
   return mockMarkets.find((m) => m.id === id);
 }
 
-export const mockHoldings = [];
-export const mockTrades = [];
+export const mockHoldings: Holding[] = [];
+export const mockTrades: TradeHistoryItem[] = [];
 export const mockUserProfile = {
   id: 'u1',
   username: 'sangoma_trader',
@@ -118,8 +118,8 @@ export const mockUserProfile = {
   bank_name: 'Standard Bank',
   kyc_verified_at: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30).toISOString(),
 };
-export const mockTransactions = [];
-export const mockProposals: any[] = [
+export const mockTransactions: Transaction[] = [];
+export const mockProposals: MarketProposal[] = [
   {
     id: 'prop-eskom-rehearsal',
     user_id: 'u1',
@@ -148,4 +148,4 @@ export const mockProposals: any[] = [
     created_at: new Date(Date.now() - 1000 * 60 * 60 * 72).toISOString(),
   }
 ];
-export const mockDisputes = [];
+export const mockDisputes: Dispute[] = [];

@@ -19,6 +19,22 @@ export interface SMEOrder {
   signature?: string;
 }
 
+export interface SMEBookUpdate {
+  type: 'book_update';
+  market_id: string;
+  outcome_token_id: string;
+  bids: SMEOrder[];
+  asks: SMEOrder[];
+}
+
+export interface SMEOrderUpdate {
+  type: 'order_accepted' | 'order_rejected' | 'order_response';
+  order_id?: string;
+  message?: string;
+}
+
+export type SMEServerMessage = SMEBookUpdate | SMEOrderUpdate;
+
 export interface SMETrade {
   id: string;
   market_id: string;
@@ -32,7 +48,7 @@ export interface SMETrade {
 
 class SMEClient {
   private ws: WebSocket | null = null;
-  private listeners: Set<(msg: any) => void> = new Set();
+  private listeners: Set<(msg: SMEServerMessage) => void> = new Set();
   private queue: any[] = [];
   private url: string;
 
@@ -43,7 +59,7 @@ class SMEClient {
     }
   }
 
-  private connect() {
+  connect() {
     return new Promise((resolve, reject) => {
       try {
         this.ws = new WebSocket(this.url);
@@ -76,7 +92,7 @@ class SMEClient {
     }
   }
 
-  subscribe(listener: (msg: any) => void) {
+  subscribe(listener: (msg: SMEServerMessage) => void) {
     this.listeners.add(listener);
     return () => this.listeners.delete(listener);
   }
