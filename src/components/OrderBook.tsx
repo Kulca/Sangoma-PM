@@ -2,15 +2,20 @@
 
 import { useState, useEffect } from 'react';
 import { Market } from '@/lib/types';
-import { smeClient, SMEBookUpdate, SMEOrder } from '@/lib/sme-client';
+import { smeClient, SMEOrder } from '@/lib/sme-client';
 
 interface OrderBookProps {
   market: Market;
 }
 
+interface BookLevel {
+  price: number;
+  quantity: number;
+}
+
 export default function OrderBook({ market }: OrderBookProps) {
-  const [bids, setBids] = useState<any[]>([]);
-  const [asks, setAsks] = useState<any[]>([]);
+  const [bids, setBids] = useState<BookLevel[]>([]);
+  const [asks, setAsks] = useState<BookLevel[]>([]);
   const [selectedTokenId, setSelectedTokenId] = useState(market.outcome_tokens?.[0]?.id || '');
 
   useEffect(() => {

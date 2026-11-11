@@ -11,6 +11,7 @@ export interface Profile {
   identity_verified?: boolean;
   liveness_verified?: boolean;
   document_verified?: boolean;
+  id_number?: string;
 }
 
 export interface OutcomeToken {
@@ -83,4 +84,35 @@ export interface Trade {
   price: number;
   quantity: number;
   executed_at: string;
+}
+
+/** A position the current user holds in a market outcome. */
+export interface Holding {
+  id: string;
+  market_id: string;
+  market_title: string;
+  outcome_label: string;
+  shares: number;
+  avg_price: number;
+  current_price: number;
+}
+
+/** A filled trade as shown in the user's trade history. */
+export interface TradeHistoryItem {
+  id: string;
+  market_title: string;
+  outcome_label: string;
+  side: 'buy' | 'sell';
+  shares: number;
+  price: number;
+}
+
+/** A ZAR wallet movement (deposit, withdrawal or stake). */
+export interface Transaction {
+  id: string;
+  type: 'deposit' | 'withdrawal' | 'stake' | 'unstake';
+  amount: number;
+  status: 'pending' | 'completed' | 'failed';
+  external_reference: string;
+  created_at: string;
 }
