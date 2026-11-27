@@ -5,6 +5,7 @@ import OrderBook from '@/components/OrderBook';
 import ProbabilityChart from '@/components/ProbabilityChart';
 import Link from 'next/link';
 import { ArrowLeft, Share2, Info, ShieldCheck, Globe, AlertTriangle, Scale } from 'lucide-react';
+import { SimulatedFundsBadge } from '@/components/SimulatedFunds';
 
 export default async function MarketPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -118,7 +119,10 @@ export default async function MarketPage({ params }: { params: Promise<{ id: str
               <TradePanel market={market} />
               
               <div className="mt-6 p-6 bg-sangoma-gold/5 border border-sangoma-gold/20 rounded-3xl">
-                <h4 className="text-[10px] font-black uppercase text-sangoma-gold tracking-widest mb-3">Your Position</h4>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <h4 className="text-[10px] font-black uppercase text-sangoma-gold tracking-widest">Your Position</h4>
+                  <SimulatedFundsBadge tone="light" />
+                </div>
                 <p className="text-xs font-bold text-sangoma-earth italic">You don't have any shares in this market yet.</p>
               </div>
             </div>

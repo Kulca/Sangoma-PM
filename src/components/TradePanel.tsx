@@ -6,6 +6,7 @@ import { Market } from '@/lib/types';
 import { smeClient } from '@/lib/sme-client';
 import { getOrCreateSessionKey } from '@/lib/safe-service';
 import { ethers } from 'ethers';
+import { SimulatedFundsBadge } from '@/components/SimulatedFunds';
 
 interface TradePanelProps {
   market: Market;
@@ -147,7 +148,9 @@ export default function TradePanel({ market }: TradePanelProps) {
 
       <div className="bg-sangoma-green/5 rounded-2xl p-4 mb-6 border border-sangoma-green/10">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-xs font-bold text-sangoma-earth">Total Cost</span>
+          <span className="text-xs font-bold text-sangoma-earth flex items-center gap-2">
+            Total Cost <SimulatedFundsBadge tone="light" />
+          </span>
           <span className="font-black text-sangoma-green">{(price * quantity).toFixed(2)} SNGM</span>
         </div>
         <div className="flex justify-between items-center mb-4">

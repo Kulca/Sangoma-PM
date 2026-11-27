@@ -1,11 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { HelpCircle, Wallet, Activity, Zap, MessageSquarePlus, ShieldCheck, Loader2 } from 'lucide-react';
+import { HelpCircle, Wallet, Activity, Zap, MessageSquarePlus, ShieldCheck, LogIn } from 'lucide-react';
 import Link from 'next/link';
-import { useAuth } from '@/context/AuthContext';
-import { Profile } from '@/lib/types';
-import { mockUserProfile } from '@/lib/mock-data';
+import { SimulatedFundsBadge } from '@/components/SimulatedFunds';
+import { formatSngm, formatZar } from '@/lib/sandbox/money';
+
+export interface HeaderFunds {
+  zarMicro: number;
+  sngmMicro: number;
+}
 
 interface HeaderProps {
   espStatus: {
@@ -13,33 +16,11 @@ interface HeaderProps {
     stage: number;
     next_stage?: number;
   };
+  /** Simulated sandbox balances; null when nobody is signed in. */
+  funds?: HeaderFunds | null;
 }
 
-export default function Header({ espStatus }: HeaderProps) {
-  const { userAddress, isLoading: authLoading } = useAuth();
-  const [profile, setProfile] = useState<Profile | null>(null);
-
-  useEffect(() => {
-    const fetchProfile = async () => {
-      if (!userAddress) {
-        setProfile(null);
-        return;
-      }
-      try {
-        const res = await fetch(`/api/profile?address=${userAddress}`);
-        const data = await res.json();
-        setProfile(data);
-      } catch (err) {
-        console.error('Failed to fetch profile:', err);
-      }
-    };
-
-    fetchProfile();
-  }, [userAddress]);
-
-  const displayBalanceSngm = profile ? profile.balance_sngm : mockUserProfile.balance_sngm;
-  const displayBalanceZar = profile ? (profile.balance_zar || 0) : mockUserProfile.balance_zar;
-
+export default function Header({ espStatus, funds = null }: HeaderProps) {
   return (
     <header className="bg-sangoma-green text-sangoma-cream px-6 pt-16 pb-20 relative overflow-hidden rounded-b-[3rem] shadow-xl">
       <div className="relative z-10">
@@ -58,15 +39,25 @@ export default function Header({ espStatus }: HeaderProps) {
             <Link href="/help" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-all">
               <HelpCircle size={18} />
             </Link>
-            <div className="flex flex-col items-end">
-              <div className="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full border border-white/20">
-                <span className="text-[10px] font-bold text-sangoma-gold">SNGM</span>
-                <span className="text-xs font-black">{displayBalanceSngm.toLocaleString()}</span>
+            {funds ? (
+              <div className="flex flex-col items-end">
+                <div className="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full border border-white/20">
+                  <span className="text-[10px] font-bold text-sangoma-gold">SNGM</span>
+                  <span className="text-xs font-black">{formatSngm(funds.sngmMicro)}</span>
+                </div>
+                <div className="text-[10px] font-black text-sangoma-gold mt-1">
+                  {formatZar(funds.zarMicro)}
+                </div>
+                <SimulatedFundsBadge className="mt-1" />
               </div>
-              <div className="text-[10px] font-black text-sangoma-gold mt-1">
-                R {displayBalanceZar.toFixed(2)}
-              </div>
-            </div>
+            ) : (
+              <Link
+                href="/sandbox/signin"
+                className="flex items-center gap-1.5 bg-sangoma-gold text-sangoma-green font-black text-[10px] uppercase tracking-widest px-3 py-2 rounded-full hover:scale-105 transition-all"
+              >
+                <LogIn size={12} /> Sign in
+              </Link>
+            )}
             <Link href="/wallet">
               <Wallet size={20} className="text-sangoma-cream/70" />
             </Link>
@@ -74,7 +65,7 @@ export default function Header({ espStatus }: HeaderProps) {
         </div>
         <h1 className="text-5xl font-black mb-3 tracking-tighter italic uppercase">SANGOMA</h1>
         <p className="text-md opacity-80 max-w-[240px] font-medium leading-tight mb-8">
-          See the future, stake your claim. South Africa's prediction market.
+          See the future, stake your claim. South Africa&apos;s prediction market.
         </p>
 
         <div className="flex gap-4 mb-8">
@@ -82,11 +73,8 @@ export default function Header({ espStatus }: HeaderProps) {
               <MessageSquarePlus size={20} /> Propose
            </Link>
            <Link href="/verification" className="flex-1 bg-white text-sangoma-green font-black py-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-all text-sm relative">
-              <ShieldCheck size={20} /> 
-              {profile?.kyc_tier === 2 ? 'Verified' : 'Verify'}
-              {profile?.kyc_tier === 0 && userAddress && (
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white animate-bounce" />
-              )}
+              <ShieldCheck size={20} />
+              Verify
            </Link>
         </div>
 

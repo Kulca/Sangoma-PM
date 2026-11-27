@@ -3,10 +3,15 @@ import MarketCard from '@/components/MarketCard';
 import { getESPStatus } from '@/lib/eskom-se-push';
 import Header from '@/components/Header';
 import Link from 'next/link';
-import { Users } from 'lucide-react';
+import { Users, Sparkles, Wallet } from 'lucide-react';
+import { headerFunds, optionalSession } from '@/lib/sandbox/guard';
+
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const espStatus = await getESPStatus();
+  const funds = await headerFunds();
+  const session = await optionalSession();
 
   // Add some metadata to mock markets for the dashboard demo
   const marketsWithGovernance = mockMarkets.map(m => {
@@ -17,7 +22,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen pb-24 bg-sangoma-cream/30">
-      <Header espStatus={espStatus} />
+      <Header espStatus={espStatus} funds={funds} />
 
       {/* Featured Markets Section */}
       <section className="px-6 -mt-8 relative z-20">
@@ -37,6 +42,43 @@ export default async function Home() {
           {marketsWithGovernance.map((market) => (
             <MarketCard key={market.id} market={market} />
           ))}
+        </div>
+
+        {/* Sandbox account CTA */}
+        <div className="mt-8 bg-white border-2 border-sangoma-green/20 rounded-3xl p-6 shadow-lg">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-amber-100 text-amber-900 border border-amber-300 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
+              Simulated funds
+            </span>
+            <span className="text-[9px] font-black uppercase tracking-widest text-gray-400">
+              Sandbox
+            </span>
+          </div>
+          <h3 className="text-xl font-black italic tracking-tighter text-sangoma-green mb-1">
+            {session ? 'Your sandbox wallet is open' : 'Try the sandbox'}
+          </h3>
+          <p className="text-sangoma-earth/60 text-xs font-medium mb-5">
+            {session
+              ? 'Trade real markets with simulated money. Your demo balance and ledger are waiting.'
+              : 'Create a sandbox account with a R10,500.00 demo wallet. Real market data, simulated money — nothing can be deposited or withdrawn.'}
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href={session ? '/wallet' : '/sandbox/signup'}
+              className="inline-flex items-center gap-2 bg-sangoma-green text-white font-black py-3 px-6 rounded-2xl shadow-lg hover:scale-105 active:scale-95 transition-all text-sm"
+            >
+              {session ? <Wallet size={16} /> : <Sparkles size={16} />}
+              {session ? 'Open my wallet' : 'Create sandbox account'}
+            </Link>
+            {!session && (
+              <Link
+                href="/sandbox/signin"
+                className="inline-flex items-center gap-2 bg-white border-2 border-sangoma-green/20 text-sangoma-green font-black py-3 px-6 rounded-2xl hover:scale-105 active:scale-95 transition-all text-sm"
+              >
+                Sign in
+              </Link>
+            )}
+          </div>
         </div>
 
         {/* Waitlist CTA */}
