@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, User, Wallet, ArrowRight, CheckCircle, Users, Loader2 } from 'lucide-react';
+import { Mail, User, Wallet, ArrowRight, CheckCircle, Users, Loader2, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 export default function WaitlistPage() {
@@ -65,6 +65,9 @@ export default function WaitlistPage() {
               {count} people ahead of you
             </p>
             <div className="mt-8 flex flex-col gap-3">
+              <Link href="/sandbox/signup" className="bg-sangoma-gold text-sangoma-green font-black py-4 px-8 rounded-2xl hover:scale-105 transition-all text-sm flex items-center justify-center gap-2">
+                <Sparkles size={16} /> Create your sandbox account
+              </Link>
               <Link href="/markets" className="bg-sangoma-green text-white font-black py-4 px-8 rounded-2xl hover:scale-105 transition-all text-sm">
                 Explore Markets
               </Link>
@@ -138,6 +141,26 @@ export default function WaitlistPage() {
             </p>
           </div>
         )}
+
+        {/* Sandbox account entry point */}
+        <div className="mt-8 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/10">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-amber-300 text-amber-950 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
+              Simulated funds
+            </span>
+          </div>
+          <h3 className="text-lg font-black italic tracking-tighter mb-1">Already on the waitlist?</h3>
+          <p className="text-white/60 text-xs font-medium mb-4">
+            Open your sandbox account and land in a demo wallet holding R10,500.00 of
+            simulated ZAR. Real market data, simulated money.
+          </p>
+          <Link
+            href="/sandbox/signup"
+            className="inline-flex items-center gap-2 bg-sangoma-gold text-sangoma-green font-black py-3 px-6 rounded-2xl shadow-lg hover:scale-105 active:scale-95 transition-all text-sm"
+          >
+            <Sparkles size={16} /> Create sandbox account
+          </Link>
+        </div>
 
         {/* Perks */}
         <div className="grid grid-cols-3 gap-4 mt-8">

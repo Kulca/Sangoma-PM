@@ -4,11 +4,15 @@ import MarketCard from '@/components/MarketCard';
 import Header from '@/components/Header';
 import Link from 'next/link';
 import { ArrowLeft, TrendingUp, Filter } from 'lucide-react';
+import { headerFunds } from '@/lib/sandbox/guard';
+
+export const dynamic = 'force-dynamic';
 
 const CATEGORIES = ['All', 'Infrastructure', 'Economics', 'Finance', 'Sports', 'Water', 'Energy', 'Politics'] as const;
 
 export default async function MarketsPage() {
   const espStatus = await getESPStatus();
+  const funds = await headerFunds();
   // Use onchain service with silent mock fallback
   const fetchedMarkets = await getMarkets();
   const marketsWithGovernance = fetchedMarkets.map(m => {
@@ -19,7 +23,7 @@ export default async function MarketsPage() {
 
   return (
     <main className="min-h-screen pb-24 bg-sangoma-cream/30">
-      <Header espStatus={espStatus} />
+      <Header espStatus={espStatus} funds={funds} />
 
       {/* Markets Content */}
       <section className="px-6 -mt-8 relative z-20">
